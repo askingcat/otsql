@@ -18,7 +18,7 @@ import (
 var (
 	instrumentationName = "github.com/j2gg0s/otsql"
 
-	tracer = global.TraceProvider().Tracer(instrumentationName)
+	tracer = global.TracerProvider().Tracer(instrumentationName)
 	meter  = global.MeterProvider().Meter("github.com/j2gg0s/otsql")
 
 	latencyValueRecorder, _ = meter.NewInt64ValueRecorder(
@@ -82,7 +82,7 @@ func startTrace(ctx context.Context, options TraceOptions, method label.KeyValue
 	start := time.Now()
 	endMetric := startMetric(ctx, method, start, options)
 
-	opts := []trace.StartOption{
+	opts := []trace.SpanOption{
 		trace.WithSpanKind(trace.SpanKindClient),
 	}
 	attrs := attrsFromSQL(ctx, options, method, query, args)
