@@ -1,6 +1,6 @@
-module github.com/j2gg0s/otsql
+module github.com/askingcat/otsql
 
-go 1.14
+go 1.15
 
 require (
 	go.opentelemetry.io/otel v0.12.0
